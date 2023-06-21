@@ -1,0 +1,12 @@
+#!/bin/sh
+
+RELEASE=/var/www/wordpicker/
+
+echo 'Copying wsgi files..'
+cp -u *.wsgi $RELEASE
+echo 'Copying Python files..'
+cp -u *.py $RELEASE
+echo 'Copying templates directory..'
+cp -ru templates $RELEASE
+echo 'Copying static directory..'
+cp -ru static $RELEASE
