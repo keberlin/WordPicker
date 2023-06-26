@@ -2,6 +2,7 @@
 
 import sys
 
+
 def perm(s):
   # Compute the list of all permutations of s
   if len(s) <= 1:

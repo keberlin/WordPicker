@@ -1,6 +1,8 @@
 #!/usr/bin/python
 
-import sys, math
+import math
+import sys
+
 
 def perm(s):
   # Compute the list of all permutations of s

@@ -1,6 +1,8 @@
-import sys, json
+import json
+import sys
 
 from utils import *
+
 
 def ReturnJson(dict):
   print 'Content-type: application/json'

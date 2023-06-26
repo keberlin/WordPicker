@@ -1,8 +1,7 @@
 import re
 
-from wpcounter import WPCounter
-
 import search
+from wpcounter import WPCounter
 
 # Word Picker - Search Engine
 

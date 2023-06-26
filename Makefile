@@ -3,4 +3,7 @@ all:
 .FORCE:
 
 tests: .FORCE
-	nosetests --with-coverage tests
+	pytest -vv tests
+
+coverage: .FORCE
+	coverage run -m pytest

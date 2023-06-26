@@ -1,12 +1,11 @@
-import os, re, datetime
-
-from wpcounter import WPCounter
+import datetime
+import os
+import re
 
 from database import db
-
-from dbutils import *
-
 from model import SowpodsModel
+from wpcounter import WPCounter
+
 
 def gen_match(chars,mask):
   # remove the matched chars and leave the . chars

@@ -1,5 +1,6 @@
 import collections
 
+
 class WPCounter(collections.Counter):
   def __init__(self,s):
     super(WPCounter,self).__init__()

@@ -2,6 +2,7 @@
 
 import search
 
+
 def format_patt(patt, strict=False):
   # if patt is an integer then treat as a fixed length word
   try:

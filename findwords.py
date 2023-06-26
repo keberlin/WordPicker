@@ -1,9 +1,9 @@
 #!/usr/bin/python
 
-import search, logger
-
-from utils import *
+import logger
 from mljson import *
+import search
+from utils import *
 
 dict = FetchFormFields()
 

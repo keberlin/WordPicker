@@ -1,19 +1,25 @@
 #!/usr/bin/python
 
+from functools import wraps
+from html import *
 import re
 
+from flask import (
+    Flask,
+    g,
+    jsonify,
+    redirect,
+    render_template,
+    request,
+    send_from_directory,
+)
+
 from database import db
-
-from functools import wraps
-from flask import Flask, render_template, request, send_from_directory, redirect, g, jsonify
-
-from html import *
-import search
-
 from handlers_html import *
 from handlers_json import *
-
 from logger import *
+import search
+
 
 def debug(str):
   logger.debug(request.remote_addr + ' ' + str)
@@ -43,18 +49,22 @@ def login_required(f):
   return decorated_function
 
 # Flask application
-app = MyFlask(__name__)
-app.config['DEBUG'] = True
-# Databases
-app.config['SQLALCHEMY_ECHO'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:postgres@localhost:5432/wordpicker"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+def create_app():
+  app = MyFlask(__name__)
+  app.config['DEBUG'] = True
+  # Databases
+  app.config['SQLALCHEMY_ECHO'] = True
+  app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:postgres@localhost:5432/wordpicker"
+  app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+  app.jinja_env.filters['byte'] = byte
+  app.jinja_env.filters['char'] = char
 
-app.jinja_env.filters['byte'] = byte
-app.jinja_env.filters['char'] = char
+  db.init_app(app)
 
-db.init_app(app)
+  return app
+
+app = create_app()
 
 # Routes
 
