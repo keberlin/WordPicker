@@ -1,4 +1,8 @@
 coverage
 Flask
+flask-sqlalchemy
 Jinja2
-nose
+pytest
+pytest-cov
+psycopg2
+psycopg2-binary

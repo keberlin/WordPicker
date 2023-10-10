@@ -6,7 +6,11 @@ echo 'Copying wsgi files..'
 cp -u *.wsgi $RELEASE
 echo 'Copying Python files..'
 cp -u *.py $RELEASE
+echo 'Copying sh files..'
+cp -ru *.sh $RELEASE
 echo 'Copying templates directory..'
 cp -ru templates $RELEASE
 echo 'Copying static directory..'
 cp -ru static $RELEASE
+echo 'Copying venv directory..'
+cp -ru venv $RELEASE

@@ -1,14 +1,12 @@
-#!/usr/bin/python
-
 import search
 
-rack = 'chelsay'
-patts = ['$...$','$....$']
+rack = "chelsay"
+patts = ["$...$", "$....$"]
 
 matches = search.search2(rack, patts)
 
 if not matches:
-  print 'None found'
+    print("None found")
 else:
-  for match in matches:
-    print match
+    for match in matches:
+        print(match)

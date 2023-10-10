@@ -1,14 +1,12 @@
-#!/usr/bin/python
-
 import search
 
-rack = ''
-patt = 'hi?e'
+rack = ""
+patt = "hi?e"
 
 matches = search.search(rack, patt)
 
 if not matches:
-  print 'None found'
+    print("None found")
 else:
-  for match in matches:
-    print match
+    for match in matches:
+        print(match)

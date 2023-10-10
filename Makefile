@@ -7,3 +7,5 @@ tests: .FORCE
 
 coverage: .FORCE
 	coverage run -m pytest
+	coverage report -m
+
