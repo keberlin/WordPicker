@@ -36,7 +36,6 @@ scandir==1.10.0           # via pathlib2
 six==1.16.0               # via more-itertools, pathlib2, pytest
 sqlalchemy==1.4.49        # via flask-sqlalchemy
 toml==0.10.2              # via pytest-cov
-typing==3.10.0.0          # via pathlib2
 wcwidth==0.2.8            # via pytest
 werkzeug==1.0.1           # via flask
 zipp==1.2.0               # via importlib-metadata

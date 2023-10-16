@@ -1,15 +1,23 @@
+from functools import wraps
 import logging
 import re
-from functools import wraps
 
-from flask import Flask, g, jsonify, redirect, render_template, request, send_from_directory
+from flask import (
+    Flask,
+    g,
+    jsonify,
+    redirect,
+    render_template,
+    request,
+    send_from_directory,
+)
 
-import search
-from database import WORDPICKER_DB_URI, db
+from database import db, WORDPICKER_DB_URI
 from handlers_html import *
 from handlers_json import *
 from logger import *
 from mlhtml import *
+import search
 
 BASE_DIR = os.path.dirname(__file__)
 
@@ -142,7 +150,7 @@ def logged_in_html():
 def the_rest(path):
     info(path)
 
-    return send_from_directory(app.static_folder, path.encode("utf-8"))
+    return send_from_directory(app.static_folder, path)
 
 
 if __name__ == "__main__":

@@ -2,12 +2,12 @@
 
 RELEASE=/var/www/wordpicker/
 
-echo 'Copying wsgi files..'
-cp -u *.wsgi $RELEASE
 echo 'Copying Python files..'
 cp -u *.py $RELEASE
 echo 'Copying sh files..'
-cp -ru *.sh $RELEASE
+cp -u *.sh $RELEASE
+echo 'Copying Makefile..'
+cp -u Makefile $RELEASE
 echo 'Copying templates directory..'
 cp -ru templates $RELEASE
 echo 'Copying static directory..'
