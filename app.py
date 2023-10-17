@@ -15,7 +15,6 @@ from flask import (
 from database import db, WORDPICKER_DB_URI
 from handlers_html import *
 from handlers_json import *
-from logger import *
 from mlhtml import *
 import search
 
@@ -27,11 +26,11 @@ logging.basicConfig(filename="/var/log/wordpicker/log", level=logging.DEBUG if T
 
 
 def debug(str):
-    logger.debug(request.remote_addr + " " + str)
+    logging.debug(request.remote_addr + " " + str)
 
 
 def info(str):
-    logger.info(request.remote_addr + " " + str)
+    logging.info(request.remote_addr + " " + str)
 
 
 class MyFlask(Flask):
