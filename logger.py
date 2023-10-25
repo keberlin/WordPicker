@@ -7,7 +7,7 @@ BASE_DIR = os.path.dirname(__file__)
 TEST = re.search("root", BASE_DIR) is not None
 
 FORMAT = "%(asctime)s:%(levelname)s:%(message)s"
-FILENAME = "/var/log/missloopy/log"
+FILENAME = "/var/log/wordpicker/log"
 
 logging.basicConfig(
     format=FORMAT,
