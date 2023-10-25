@@ -1,5 +1,4 @@
 from functools import wraps
-import logging
 import re
 
 from flask import (
@@ -15,22 +14,13 @@ from flask import (
 from database import db, WORDPICKER_DB_URI
 from handlers_html import *
 from handlers_json import *
+from logger import logger
 from mlhtml import *
 import search
 
 BASE_DIR = os.path.dirname(__file__)
 
 TEST = re.search("root", BASE_DIR) is not None
-
-logging.basicConfig(filename="/var/log/wordpicker/log", level=logging.DEBUG if TEST else logging.INFO)
-
-
-def debug(str):
-    logging.debug(request.remote_addr + " " + str)
-
-
-def info(str):
-    logging.info(request.remote_addr + " " + str)
 
 
 class MyFlask(Flask):
@@ -94,11 +84,8 @@ def logged_out_json():
     if json:
         values.update(json)
 
-    info("%s: %s" % (page, values))
-
     func = globals().get("handle_%s" % page)
     data = func(None, values, request.files)
-    info("%s: %s" % (page, data))
     return jsonify(data)
 
 
@@ -111,8 +98,6 @@ def logged_out_html():
     json = request.get_json()
     if json:
         values.update(json)
-
-    info("%s: %s" % (page, values))
 
     attrs = html_defaults(request.host, request.user_agent.string)
     attrs.update(values)
@@ -133,9 +118,6 @@ def logged_in_html():
     if json:
         values.update(json)
 
-    info("%s: %s" % (page, values))
-    # info('%s: id:%d %s' % (page, id, values))
-
     attrs = html_defaults(request.host, request.user_agent.string)
     attrs.update(values)
 
@@ -147,8 +129,6 @@ def logged_in_html():
 
 @app.route("/<path:path>")
 def the_rest(path):
-    info(path)
-
     return send_from_directory(app.static_folder, path)
 
 
