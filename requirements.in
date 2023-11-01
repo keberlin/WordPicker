@@ -1,8 +1,9 @@
 coverage
-Flask
+flask
 flask-sqlalchemy
-Jinja2
-pytest
-pytest-cov
+gunicorn
+jinja2
 psycopg2
 psycopg2-binary
+pytest
+pytest-cov
