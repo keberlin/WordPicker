@@ -1,6 +1,12 @@
 from wpcounter import WPCounter
 
 
+def test_wpcounter():
+    wpcounter = WPCounter("RACK")
+    wpcounter += "EXTRA"
+    assert wpcounter == WPCounter("RACKEXTRA")
+
+
 def test_canmatch():
     result = "PAYER" in WPCounter("P.Y.R")
     assert result

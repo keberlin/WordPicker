@@ -1,5 +1,6 @@
 import re
 
+from logger import logger
 import search
 from wpcounter import WPCounter
 
@@ -46,20 +47,16 @@ def handle_find(entry, values):
     rack = cleanse(rack, "")
     patt = cleanse(patt, "0-9,\$\[\]")
 
-    # See if it's a special case (cookie)
-    matches = special_case(rack, patt)
-
-    if matches is None:
-        # See if it's a multiple word case
-        patts = patt.split(",") if patt else []
-        patts = [format_patt(v, len(patts) > 1) for v in patts]
-        if len(patts) > 1:
-            matches = search.search2(rack, patts)
-            multi = True
-        elif len(patts) == 1:
-            matches = search.search(rack, patts[0])
-        else:
-            matches = search.search(rack, None)
+    # See if it's a multiple word case
+    patts = patt.split(",") if patt else []
+    patts = [format_patt(v, len(patts) > 1) for v in patts]
+    if len(patts) > 1:
+        matches = search.search2(rack, patts)
+        multi = True
+    elif len(patts) == 1:
+        matches = search.search(rack, patts[0])
+    else:
+        matches = search.search(rack, None)
 
     entries = {}
 

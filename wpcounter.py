@@ -13,7 +13,7 @@ class WPCounter(collections.Counter):
     def __repr__(self):
         return "WPCounter(" + str(self) + ")"
 
-    def __add__(self, s):
+    def __iadd__(self, s):
         cpy = WPCounter(str(self))
         for c in s:
             cpy[c] += 1
