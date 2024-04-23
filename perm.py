@@ -6,7 +6,7 @@ def perm(s):
     if len(s) <= 1:
         yield s
     else:
-        for i in xrange(len(s)):
+        for i in range(len(s)):
             c = s[i]
             rest = s[:i] + s[i + 1 :]
             for x in perm(rest):

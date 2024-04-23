@@ -9,7 +9,7 @@ def perm(s):
     else:
         i = 0
         l = len(s)
-        for x in xrange(math.factorial(l)):
+        for x in range(math.factorial(l)):
             yield s
             t = s[i]
             s[i] = s[i + 1]
