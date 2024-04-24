@@ -63,6 +63,8 @@ def create_app():
 
     db.init_app(app)
 
+    logger.info(f"config: {app.config}")
+
     return app
 
 
@@ -84,6 +86,8 @@ def logged_out_json():
     if json:
         values.update(json)
 
+    logger.info(f"logged_out_json: page: {page}, values: {values}, json: {json}")
+
     func = globals().get("handle_%s" % page)
     data = func(None, values, request.files)
     return jsonify(data)
@@ -95,9 +99,8 @@ def logged_out_json():
 def logged_out_html():
     page = request.path[1:]
     values = dict([(x, "|".join(request.values.getlist(x))) for x in list(request.values.keys())])
-    json = request.get_json()
-    if json:
-        values.update(json)
+
+    logger.info(f"logged_out_html: page: {page}, values: {values}")
 
     attrs = html_defaults(request.host, request.user_agent.string)
     attrs.update(values)
@@ -114,9 +117,8 @@ def logged_out_html():
 def logged_in_html():
     page = request.path[1:]
     values = dict([(x, "|".join(request.values.getlist(x))) for x in list(request.values.keys())])
-    json = request.get_json()
-    if json:
-        values.update(json)
+
+    logger.info(f"logged_in_html: page: {page}, values: {values}")
 
     attrs = html_defaults(request.host, request.user_agent.string)
     attrs.update(values)
@@ -129,6 +131,7 @@ def logged_in_html():
 
 @app.route("/<path:path>")
 def the_rest(path):
+    logger.info(f"the_rest: path: {path}")
     return send_from_directory(app.static_folder, path)
 
 
