@@ -63,8 +63,6 @@ def create_app():
 
     db.init_app(app)
 
-    logger.info(f"config: {app.config}")
-
     return app
 
 
